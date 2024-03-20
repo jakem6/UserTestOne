@@ -1,21 +1,1307 @@
 html{
-    font-size: 18px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 300;
+  font-size: 20px;
+  font-family: var(--font-family);
+  font-weight: 300;
 }
 
-.form{
+
+
+@media (min-width: 1000px){
+  html{
+    font-size: 1.2em;
+  }
+}
+@media (max-width: 1000px){
+  html{
+    font-size: 1em;
+  }
+}
+@media (max-width: 850px){
+  html{
+    font-size: 0.9em;
+  }
+}
+@media (max-width: 650px){
+  html{
+    font-size: 0.8em;
+  }
+}
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+:root { /*------------------------------------CUSTOM REALTOR INFORMATION-------------------------------------------------------------------------------*/
+  --primary-color: #1a4578;
+  --primary-opacity:rgba(26, 69, 120, 0.35); /* (primary blue @35% Opacity) */
+  --secondary-color: #FFF;
+  --button-hover-color:#3062a0;
+  --input-hover: #eaeaea;
+  --backround-color: #FFF;
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --primary-gradient: linear-gradient(to right, rgba(48, 98, 160, 1) 0%, rgba(26, 69, 120, 1) 100%, rgba(48, 98, 160, 1) 0%  );
+  /*SLIDER CSS*/
+  --slider-starting-color: #4685d1;
+  --slider-thumb-size: 1.3rem; 
+  --slider-value-percentage: 0%; 
+  --thumb-size: 1.5rem; /* Size of the thumb */
+  --track-height: 1rem; /* Height of the slider track */
+}
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------Header, Footer and Social Media ------------------------------------------------------------------*/
+.header {/*HEADER*/
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.5rem;
+  background-color: var(--primary-color); 
+  color: var(--backround-color);
+  float: none;
+  font-size: 1.25rem;
+  padding: 1rem;
+  cursor: pointer;
+}
+.footer {/*FOOTER*/
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color); 
+  color: var(--backround-color);
+  float: none;
+  height: 7.5rem;
+  font-size: 2.25rem;
+  padding: 1rem;
+  cursor: pointer;
+}
+.logo{
+  position: relative;
+  height: 4.5rem;
+}
+.social-icons{
+  display: flex;
+  width: 75%;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-left: .125rem;
+  margin-top: .8rem;
+
+  cursor: pointer;
+}
+.social-icons i{
+  font-size: 1.75rem;
+  margin-left: .35rem;
+  margin-right: .35rem;
+  cursor: pointer;
+}
+.header a{
+  flex-grow: 1;
+  color: var(--backround-color);
+  text-align: left; /* Aligns the text to the left */
+}
+.footer a{
+  color: var(--backround-color);
+}
+.header span,
+.footer span {
+  flex-grow: 1;
+  color: var(--backround-color);
+  text-align: left; /* Aligns the text to the left */
+}
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------Form/Card--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------------------------*/
+.multi-step-form { /*Child of content wrapper*/
+  overflow: hidden;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.card { /*Child of multi-step-form*/
+display: flex;
+flex-direction: column;
+align-items: center;
+background-color: var(--backround-color);
+border: 0.05rem solid var(--primary-color); 
+border-radius: .5rem;
+padding: .65rem .95rem;
+width: 90%;
+max-width: 1250px;
+float: none;
+max-height: fit-content;
+margin: 1.25rem auto;
+animation: fade 250ms ease-in-out forwards;
+box-shadow:inset 0 -0.1rem 0.2rem #FFF,inset 0 0.1rem 0.2rem #e7e3e3,0.2rem 0.2rem 0.4rem #7a7878;
+}    
+.card.active { /*CHILD of "Card*/
+animation: slide 250ms 125ms ease-in-out both;
+}
+.hide {
+  display: none;
+}
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------Property Type Buttons-----------------------------*/
+.propertytypebutton {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: .625rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    height: 11rem;
+    width: 100%;
+    background: var(--primary-color);
+    font-size: 1.75rem;
+    color: var(--backround-color);
+    box-shadow: .2rem .2rem .4rem #7e7c7c,-.2rem -.2rem .2rem 0 #FFF; 
+    box-shadow: .2rem .2rem .4rem #7e7c7c, inset -.1rem -.1rem .1rem -.1rem #FFF;
+}
+.button-icon{
+  margin-left: .75rem;
+  margin-right: .5rem;
+  font-size: 1.25rem;
+  pointer-events: none;
+}
+
+.propertytypebutton:hover {
+    scale: 1.05;
+    transition: all .2s ease-in-out;
+}
+.propertytypebutton-wrapper{
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1.5rem;
+}
+@media(max-width: 600px){
+  .propertytypebutton-wrapper{
+    grid-template-columns: 1fr;
+  }
+}
+/*----------------------------------------------------Dynamic Page after propertyTypeButtons--------------------------------------------------------------------------------------*/
+.input-test{
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 2rem;
+}
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*-------------------------Nav Buttons-----------------------------------------------------------------------------------------------------------------------------*/
+.nav-button-container{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: .5rem;
+}
+.primaryButton i,
+.secondaryButton i{
+  pointer-events: none;
+}
+.primaryButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+  height: 3rem;
+  background-color: var(--primary-color);
+  color: var(--backround-color);
+  font-size: 1rem;
+  font-weight: 300;
+  border-radius: .5rem;
+  justify-self: center;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: .3s ease;
+  box-shadow: .2rem .2rem .5rem #7e7c7c,-.2rem -.2rem .2rem 0 #FFF; 
+  box-shadow: .2rem .2rem .5rem #7e7c7c, inset -.1rem -.1rem .1rem -.1rem #FFF;
+}
+.primaryButton:hover {
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 1rem;
+    justify-self: center;
+    cursor: pointer;
+    transition: .1s ease;
+    outline: 0.1rem solid var(--primary-color);
+}
+.primaryButton i{
+  position: absolute;
+  right: .5rem;
+}
+.secondaryButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+    height: 3rem;
+    background-color: var(--backround-color);
+    color: var(--primary-color);
+    font-size: 1rem;
+    font-weight: 300;
+    border-radius: .5rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: .3s ease;
+    box-shadow: 0.31rem 0.31rem 0.625rem 0 rgba(0, 0, 0, 0.5), inset 0.125rem 0.125rem 0.31rem 0 rgba (0, 0, 0, 0.2);
+    box-shadow: .2rem .2rem .5rem #7e7c7c,-.2rem -.2rem .5rem #FFF; 
+    box-shadow: .2rem .2rem .5rem #7e7c7c, inset -.1rem -.1rem .1rem -.1rem #FFF;
+}
+.secondaryButton i {
+  position: absolute;
+  left: .5rem;
+}
+.secondaryButton:hover {
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: .1s ease;
+    outline: 0.1rem solid var(--primary-color);
+}
+/*--------------------------------Icons------------------------------------------------------------------------------------------------------------------------------------*/
+.bi.bi-arrow-right,
+.bi.bi-arrow-left{
+  font-size: 1.5rem;
+  margin: 0 1.5rem;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------Divider------------------------------------------------------------------------------------------------------------------------------------*/
+.divider {
+    height: 1rem; /* Specifies the thickness of the divider */
+    width: 100%; /* Divider width as a percentage of its container's width */
+    background-color: var(--primary-color); /* Color of the divider */
+    margin: 1.25rem 0; /* Vertically spaces out the divider and horizontally centers it */
+}
+.invisible-divider {
+  height: .2rem; /* Specifies the thickness of the divider */
+  width: 100%; /* Divider width as a percentage of its container's width */
+  background-color: transparent; /* Color of the divider */
+  margin: 1rem 0; /* Vertically spaces out the divider and horizontally centers it */
+}
+
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*-------------------------------Realtor Questionaire-------------------------------------------------------------------------------------------------------*/
+
+.Realtor-Questionaire-Conditional{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------Required Field Error Msg---------------------------------------------*/
+/*
+.error-message{
+  display: none;
+  position: relative;
+  text-align: center;
+  height: fit-content;
+  width: fit-content;
+  box-sizing: border-box;
+  margin: .3rem 0;
+  font-size: .7rem;
+  background-color: red;
+  color: var(--backround-color);
+  padding: .3rem .6rem;
+  border-radius: 5px;
+}
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------Titles and Labels--------------------------------------------------------------------------------------------*/
+.step-title{
     display: flex;
     width: 100%;
-
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+    border-bottom: .2rem solid var(--primary-color);
+    margin-top: .25rem;
+    margin-bottom: 0;
+}
+.step-title i{
+  position: absolute;
+  left: 1rem;
+  margin-right: .5rem;
+}
+@media (max-width:450px){
+  .step-title i{
+    left: 0.2rem;
+  }
+}
+  .step-sub-title{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 500;
+    padding-bottom: .5rem;
+    margin-bottom: .625rem;
+}
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------Input Groups-----------------------------------------------------------------------------------------*/
+.input-title{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  font-size: 1.25rem;
+  text-decoration: underline;
+  font-weight: 500;
+  padding-bottom: 0.4rem;
+  margin-top: .75rem;
+  margin-left: .4rem;
+  margin-bottom: .4rem;
+}
+.input-label{
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 500;
+  padding-bottom: 0.4rem;
 }
 
-.divider{
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------------Containers-----------------------------------------------------------------------------*/
+.flex-container-column{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  align-content: center;
+  margin-top: 8rem;
+
+}
+.flex-container-row{
+  display: flex;
+  width: 100%;
+  gap: .25rem;
+  align-content: center;
+  justify-content: center;
+}
+
+.checkbox-grid-container{
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  gap: .75rem;
+}
+@media (max-width: 340px){
+  .checkbox-grid-container{
+    grid-template-columns: 1fr ;
+    gap: 0;
+    align-items: center;
+
+  }
+}
+.homeage-grid-container{
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: .75rem;
+}
+.twoColumn-grid-container{
+    display: grid;
     width: 100%;
-    height:2px;
-    background-color: #000;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
 }
-.divider label{
+@media (max-width: 890px){
+  .twoColumn-grid-container{
+    grid-template-columns: 1fr ;
+    gap: .25rem;
+    align-items: center;
+
+  }
+}
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------Used for Address Page----------------------------------------------------------*/
+.threeColumn-grid-container{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: .75rem;
+    align-items: center;
+    justify-content: center;
+}
+@media (max-width: 650px){
+    .threeColumn-grid-container{
+    grid-template-columns: 1fr 1fr; /* Adjusts to 2 columns */
+    grid-template-areas:
+    "item1 item1"
+    "item2 item3";
+    gap: .75rem;
+    }
+
+    .threeColumn-grid-container > div:nth-child(1) { grid-area: item1; }
+    .threeColumn-grid-container > div:nth-child(2) { grid-area: item2; }
+    .threeColumn-grid-container > div:nth-child(3) { grid-area: item3; }
+}
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------Input Types------------------------------------------------------------------------------------*/
+label {  /* Labels for users inputs */
+  display: inline-block; 
+  margin-bottom: 0.5rem; 
+  position: relative;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+  flex: 1;
+}
+input[type="email"],
+input[type="tel"],
+input[type="text"]{
+    font-size: 1rem;
+    width: 100%;
+    height: 1.5rem;
+    border-radius: .5rem;
+}
+input[type="email"]:hover,
+input[type="tel"]:hover,
+input[type="text"]:hover{
+    border: 0.1rem solid var(--primary-color);
+    cursor: pointer;
+}
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="text"]:focus{
+    outline: 0.1rem solid var(--primary-color);
+    cursor: pointer;
+}
+input[type="textarea"]:focus{
+    outline: 0.1rem solid var(--primary-color);
+    height: 1.5rem;
+    cursor: pointer;
+}
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------Progress Steps/Circles------------------------------------------------------------------------------------*/
+
+.progress-container {
+  display: flex;
+  margin: .5rem 1.25rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (max-width: 840px){
+  .progress-container{
+    margin: .75rem .75rem;
+    }
+    
+  }
+.progress-container .steps {
+  display: flex;
+  width: 80%;
+  align-items: center;
+  justify-content: space-between;
+}
+.progress-container .step {
+  position: relative;
+  display: flex;
+  margin-top: .75rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center ;
+}
+.progress-container .step-text {
+  display: none;
+  text-align: center;
+}
+.progress-container .step-text.active {
+  display: flex;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 800;
+  font-size: .75rem;
+  color: #000000;
+  transform: translateY(1rem);
+}
+.progress-container .step-text-completed {
+  display: none;
+  color: var(--primary-color);
+}
+@media (max-width: 840px){
+    .progress-container .steps {
+      width: 100%;
+    }
+  }
+.progress-container .circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.85rem;
+  width: 1.85rem;
+  color: #000000;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 50%;
+  background: var(--backround-color);
+  border: 0.2rem solid #e0e0e0;
+  transition: all 200ms ease;
+  transition-delay: 0s;
+}
+.progress-container .circle.active{
+  transition-delay: 100ms;
+  transform: translateY(.75rem);
+  border-color: var(--primary-color);
+  color: #000000;
+}
+.progress-container .circle-completed::before {
+  content: "\F26E"; 
+  font-family: bootstrap-icons;
+  color: var(--backround-color);
+  font-size: 2rem; 
+  padding-right: 1.0.075rem;
+  padding-top: 0.05rem;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
+
+.progress-container .circle-completed {
+  color: transparent; /* Hide the number */
+  background-color: var(--primary-color); 
+  border-color: var(--backround-color);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+/*----------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------Text Area----------------------------------------------------*/
+textarea{
+  width: 100%;
+  height: 6rem;
+  font-size: .85rem;
+  flex: 1;
+  outline: 0.0125rem solid var(--primary-color);
+  box-shadow: .1rem .1rem .25rem #7e7c7c,-.2rem -.2rem .2rem 0 #FFF; 
+  padding: .5rem;
+  border-radius: .25rem;
+} 
+textarea:focus{
+  width: 100%;
+  outline: 0.25rem solid var(--primary-color);
+} 
+
+textarea:hover{
+  cursor: pointer;
+  font-size: .875rem;
+  flex: 1;
+  outline: 0.25rem solid var(--primary-color);
+}
+.textarea-container{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+/*----------------------------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------Checkbox Inputs------------------------------------------------------------------------------*/
+[type="checkbox"]{
+    opacity: 0;
+}
+
+
+.checkbox{ /*Fieldset*/
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding:0;
+    border:none;   
+}
+.checkbox label {
+    text-align:center;
+    position:relative;
+    cursor:pointer;
+    width: 100%;
+}
+.checkbox label span {
+    display:flex;
+    justify-content: center;
+    line-height:1.5rem;
+    max-height:2.85rem;
+    width: 100%;
+    padding: .2rem .1rem;
+    min-width: 10rem;
+    background:var(--backround-color);
+    color:var(--primary-color);
+    border-radius: 0.4rem;
+    outline: 0.0125rem solid var(--primary-color);
+    box-shadow: 0.08rem 0.08rem 0.2rem #7e7c7c,-0.2rem -0.2rem 0.2rem 0 #FFF; 
+}
+.checkbox label input {
+    display:none
+}
+.checkbox label span:hover{
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    cursor: pointer;
+    font-weight: 600;
+    scale: 1.01;
+}
+.checkbox label input:checked + span {
+    color: var(--backround-color);
+    background-color: var(--primary-color);
+    border: 0.1rem #000;
+    font-weight: 600;
+}
+/*------------------------------------------------------------------------------------------------------------*/
+/*-------------------------------------Used for Contact and Address Information-------------------------------*/
+.CustomerInfo input[type="email"]:focus,
+.CustomerInfo input[type="tel"]:focus,
+.CustomerInfo input[type="text"]:focus{
+    outline: var(--backround-color); 
+    width: 100%; 
+    
+}
+.CustomerInfo input[type="email"]:hover,
+.CustomerInfo input[type="tel"]:hover,
+.CustomerInfo input[type="text"]:hover{
+    outline: var(--backround-color); 
+    width: 100%; 
+}
+.CustomerInfo input[type="email"],
+.CustomerInfo input[type="tel"],
+.CustomerInfo input[type="text"]{
+    width: 100%; 
+}
+.CustomerInfo {
+    display: flex;
+    align-self: center;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    margin-bottom: 1.875rem;
+}
+.CustomerInfo input {
+    width: 100%;
+    height: 100%;
+    color: #000;
+    padding-top: 1.56rem;
+    padding-bottom: .31rem;
+    border-radius: .5rem;
+    outline: none;
+    background-color: var(--backround-color);
+}
+.CustomerInfo input:hover {
+    border: 0.1rem solid var(--primary-color);
+    cursor: pointer;
+}
+.CustomerInfo input:focus {
+    border: 0.1rem solid var(--primary-color);
+    cursor: pointer;
+}
+
+.CustomerInfo label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin-left: .31rem;
+    pointer-events: none;
+    box-sizing: border-box;
+}
+
+.CustomerInfo label::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.05rem;
+    transition: transform 0.3s ease
+}
+
+.input-content {
+    position: absolute;
+    bottom: .31rem;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+.CustomerInfo input:focus + .cust-input .input-content,
+.CustomerInfo input:valid + .cust-input .input-content{
+    transform: translatey(-100%);
+    font-size: .85rem;
+    opacity: 65%;
+    color: var(--primary-color);
+}
+
+.CustomerInfo input:focus + .cust-input::after,
+.CustomerInfo input:valid + .cust-input::after {
+    transform: translatex(0%);
+}
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------New (Generic) Radio--------------------------------------------------------------------------------------------*/
+
+
+.generic-radio-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 80%; 
+}   
+
+.generic-radio{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.generic-radio input[type="radio"]  {
+  position: relative;
+  opacity: 1;
+  -webkit-appearance: none;
+  border: 0.15rem solid #7e7c7c;
+  display: inline-block;
+  margin: .65rem -1.25rem; /* Adjusts space between the radio button and its label text */
+  border-radius: 50%;
+  height: 1rem;
+  width: 1rem;
+  transform: translateY(2.35rem);
+  cursor: pointer;
+}
+.generic-radio input[type="radio"]:hover{
+  border: 0.15rem solid var(--primary-color);
+}
+.generic-radio input[type="radio"]:checked  {
+  background-color: var(--primary-color);
+}
+.generic-radio label{
+  position: relative;
+  margin-left: .5rem;
+}
+
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------Radio Slide Inputs--------------------------------------------------------------------------------------------*/
+input[type="radio"] {
+  position: relative;
+  -webkit-appearance: none;
+  opacity: 0;
+  display: inline-block;
+  margin-right: 0.5rem;
+  margin-bottom: 0.1rem; /* Adjusts space between the radio button and its label text */
+}
+          
+.radio {/*Fieldset*/                
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 0;
+    border: 0.1rem solid var(--primary-color);
+    background: var(--backround-color);
+    border-radius: 2rem;
+}
+.radio label{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    position: relative;
+    height: 100%;
+    z-index: 2;
+    padding: .3rem .62rem;
+    border-top: none;
+    border-bottom: none;
+    margin-top: 0; /*These margins are to counteract master label*/     
+    margin-right: 0;
+    margin-bottom: 0;
+    cursor: pointer;
+} 
+@media (max-width: 390px){
+  .radio label{
+    padding: 0.15rem;
+    margin: 0.1rem
+  }
+} 
+@media (max-width: 335px){
+  .radio label{
+    padding: 0.15rem;
+    margin: 0.1rem;
+    font-size: 0.75rem;
+  }
+} 
+.radio label span {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--primary-color);
+    transition: all 500ms ease-in-out;
+} 
+
+.radio label input:checked + span {
+  color: var(--backround-color); 
+  font-weight: 600;
+}
+.radio .bi.bi-check-lg{
+  font-size: 1rem;
+  opacity: 0;
+} 
+.radio input[type="radio"]:checked + span .bi.bi-check-lg {
+  font-size: 1rem;
+  opacity: 1;
+}
+.switch {/* floating background */          
+    position: absolute;
+    left: 0;
+    background-color: var(--primary-color);
+    color: var(--backround-color);
+    transition: left 0.5s ease-out, width 0.25s ease;  
+    z-index: 1;
+    border-radius: 2rem;
+}
+/*--------------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------DROPDOWNS-----------------------------------------------------------------------------------*/
+.dropdown { /*Dropdown Select Class Here*/
+    width: 100%;
+    margin-bottom: .95rem;
+    flex: 1;
+}
+.dropdown .input-box { /*INSIDE BOX STYLES*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  width: 100%;
+  height: 4rem;
+  margin-top: .65rem;
+  font-size: 1rem;
+  box-sizing: border-box;
+  border-radius: .5rem;
+  padding: .65rem .95rem;
+  cursor: pointer;
+  background-color: var(--backround-color);
+  border: 0.025rem solid var(--primary-color);
+  box-shadow: .1rem .1rem .25rem #7e7c7c,-.2rem -.2rem .2rem 0 #FFF; 
 
 }
+.bi.bi-arrow-down-circle{ /* Before selection icon */
+  margin-left: .5rem;
+}
+.bi.bi-check-lg{ /* After selection icon */
+  margin-left: .5rem;
+  font-size: 1.5rem;
+}
+.dropdown .input-box:hover {
+    background: var(--secondary-color);
+    border: solid var(--primary-color);
+    font-weight: 500;
+    cursor: pointer;
+}
+.dropdown .input-box.open {
+  background: var(--secondary-color);
+  border: solid var(--primary-color);
+  color: var(--primary-color);
+  font-weight: 500;
+  cursor: pointer;
+}
+.input-box.selected {
+  border-color: var(--primary-color); /* Change border color to indicate selection */
+  outline: 0.0125rem solid var(--primary-color);
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+.input-box.selected:hover {
+  border-color: var(--primary-color); /* Change border color to indicate selection */
+  outline: 0.0125rem solid var(--primary-color);
+  color: var(--secondary-color);
+  background-color: var(--button-hover-color);
+  font-size: 1rem;
+}
 
+
+.dropdown .list { /*LIST is the dropdown options*/
+    position:sticky;
+    cursor: pointer;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: fit-content;
+    background: var(--secondary-color);
+    border-radius: 2mm;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    flex-direction: column;
+    max-height: 0;
+    transition: 0.25s ease-out;
+    z-index: 2;
+}
+.dropdown .list :hover { 
+    background: var(--input-hover);
+}
+.dropdown .list input{
+    display: none;
+}
+.dropdown .list label { /*DROPDOWN LABELS*/
+    display: flex;
+    width: 100%;
+    border-bottom: 0.05rem solid var(--primary-color);
+    align-items: center;
+    justify-content: flex-start;
+    font-size: .85rem;
+    font-weight: 600;
+    padding: .7rem 1rem;
+    margin: 0 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative;
+}
+
+.dropdown input:checked + label::before {
+    color: var(--button_hover);
+    position: absolute;
+    top: 50%;
+    right: .95rem;
+    transform: translate(0, -50%);
+    font-size: 1rem;
+}
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*-----------------------------------Picker Class (Scroll)--------------------------------------------------------------------------------------------------------*/
+.dual-picker-container{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  margin: 2rem auto;
+  border: .5rem solid #000;
+}
+.single-picker-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  margin: 0 .5rem;
+  border: .5rem solid #000;
+}
+
+
+
+.scroll-container {
+  flex: 1;
+  position: relative;
+  height: 10rem;
+  max-height: 10rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  width: 100%;
+  z-index: 2;
+  background-color: var(--backround-color);
+  
+}
+.scroll-container :nth-child(2){
+  padding-top: 2rem;
+}
+.scroll-container :last-child{
+  margin-bottom: 4rem;
+}
+.picker-overlay {
+  position: sticky;
+  height: 2rem; /* Same as picker-item height */
+  width: 100%;
+  left: 0;
+  right: 0;
+  top: calc(50% - 1rem);
+  background-color: #efefef;
+  pointer-events: none; /* Allows clicks to pass through */
+  z-index: 2;
+}
+
+
+.picker-item {/* ADJUST THIS FURTHER */
+  width: 100%;
+  position: relative;
+  font-size: .85rem;
+  padding: .5rem 0;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  scroll-snap-align: center;
+  z-index: 3;
+  transition: transform 0.1s ease, background-color 0.1s ease;
+}
+.picker-item-highlighted {
+  color: #000; /* Change text color if needed */
+  font-weight: 600; /* Make text bold */
+}
+.picker-item-effected {/* Two away from highlighted */
+  opacity: 0.6; 
+  font-size: .625rem;
+  transition: .0005s ease-in-out;
+  
+}
+  
+/*-----------------------------------Lot size Picker--------------------------------------------------------------------------------------------------------*/
+
+#lotSizePicker .picker-item {
+  /* Different background color for lot size picker items, if needed */
+  background-color: #e8e8e8; /* Slightly different shade of grey, adjust as needed */
+}
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------------------------*/
+ /*--------------------------------------------- Hidden (conditional) Text Inputs for "other"s-----------------------------------*/ 
+#LotRentInput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: #000;
+  font-weight: 500;
+}
+#CondoFeesInput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: #000;
+  font-weight: 500;
+}
+#LotRentInput span,
+#CondoFeesInput span{
+  margin-bottom: 1rem;
+}
+/*--------------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------SLIDER CSS-------------------------------------------------------------------*/
+  /* Slider Customizations */
+.slider-container {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    width: 100%;
+    margin-bottom: .625rem;
+    margin-right: .625rem;
+    margin-left: .625rem;
+    align-items: center; /* Center-align children horizontally */
+}
+.slider-custom {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  width: 100%;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  border-radius: 0.05rem solid #000;
+}
+.slider-label{
+  margin: .1rem .625rem;
+  font-weight: 500;
+}
+.slider-label .bi.bi-arrow-left,
+.slider-label .bi.bi-arrow-right{
+  vertical-align: -.3rem;
+  margin: 0 0;
+}
+@media (max-width: 350px){
+  .slider-label .bi.bi-arrow-left,
+.slider-label .bi.bi-arrow-right{
+  font-size: 1rem;
+}
+}
+.slider-label-wrapper{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+
+.slider-custom.label{
+  margin: .31rem .31rem;
+}
+.slider-label, #sliderValue {
+  text-align: center; /* Center text for labels and output */  
+}
+#sliderValue {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: .1875rem;
+  padding: .1875rem; /* Adds some space inside the border */
+  color: var(--primary-color);
+  font-size: 1.2rem; /* Larger text */
+  font-weight: 500;
+  margin-top: 0; /* Adds space between the slider and the output */
+}
+/* ----------------------------------------------------------Slider Track------------------------------------------------ */
+.slider-custom input[type="range"]::-webkit-slider-runnable-track {
+  appearance: none;
+  width: 100%;
+  height: 1rem;
+  background: linear-gradient(to right, var(--slider-starting-color) 0%, var(--primary-color) var(--slider-value-percentage), #FFF var(--slider-value-percentage));
+  border: solid var(--primary-color);
+  border-radius: var(--track-height);
+  cursor: pointer;
+}
+.slider-custom input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 1rem;
+  background: linear-gradient(to right, var(--slider-starting-color) 0%, var(--primary-color) var(--slider-value-percentage), #FFF var(--slider-value-percentage));
+  border: solid var(--primary-color);
+  border-radius: var(--track-height);
+  cursor: pointer;
+}
+.slider-custom input[type="range"]::-ms-track {
+  width: 100%;
+  height: 1rem;
+  border-radius: var(--track-height);
+  cursor: pointer;
+  background: var(--backround-color);
+
+}
+/* ----------------------------------------------------------Slider Thumb--------------------------------------------------- */
+.slider-custom input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  transform: translateY(-0.3rem);
+  border: transparent;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+}
+.slider-custom input[type="range"] {/* Counteracts mainly Safari's default range settings (webkit) */
+  appearance:none;
+  display: flex;
+  margin: .5rem .31rem;
+  width: 100%; 
+}
+
+
+.slider-custom input[type="range"]::-moz-range-thumb {
+  border: transparent;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+}
+.slider-custom input[type="range"]::-ms-thumb {
+  border: transparent;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+}
+/*---------------------------------------------------------- Focus styles for Thumb---------------------------------------------------------- */
+.slider-custom input[type="range"]:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 0.15rem var(--backround-color), 0 0 0 0.3rem var(--primary-color);
+  max-width: fit-content;
+}
+/* Ensure the slider handles touch and mouse events effectively */
+.slider-custom input[type="range"]:active {
+  transform: scaleY(1.1);
+}
+@media (max-width: 600px){
+  .slider-custom{
+    font-size: 1.1rem;
+  }
+  #sliderValue{
+    font-size: 1.25rem;
+  }
+}
+/*----------------------------------------------------------Slider ANIMATIONS----------------------------------------------------------*/
+@keyframes slide {
+    0% {
+      transform: translateX(200%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fade {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(.75);
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0);
+    }
+  }
+/*--------------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------------------------------------------------*/
